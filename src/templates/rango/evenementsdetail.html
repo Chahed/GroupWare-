@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+{% load staticfiles %} <!-- New line -->
+
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+<meta charset="utf-8">
+<title>Mooc - Ecole Nationale des sciences de l'informatique</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="" />
+
+<!-- css -->
+<link href="{% static "css/bootstrap.min.css"%}" rel="stylesheet" />
+<link href="{% static "css/fancybox/jquery.fancybox.css" % }" rel="stylesheet">
+<link href="{% static "css/jcarousel.css"%}" rel="stylesheet" />
+<link href="{% static "css/flexslider.css"%}" rel="stylesheet" />
+<link href="{% static "css/style.css"%}" rel="stylesheet" />
+
+<link href="{% static "css/styleanim.css"%}" rel="stylesheet" />
+
+<link href="{% static "css/styleevt.css"%}" rel="stylesheet" />
+
+<!-- Theme skin -->
+<link href="{% static "skins/default.css" %}" rel="stylesheet" />
+</head>
+<body>
+<div id="wrapper">
+	<!-- start header -->
+	<header>
+        <div class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                     <a class="navbar-brand" href="http://127.0.0.1:8000/home/"><span>E</span>NSI-M<span>ooc</span></a><br>
+                    <a class="navbar-brand"><span>L</span>a platforme pedagogique de L'<a class="navbar-brand" href="http://www.ensi.rnu.tn"><span>ENSI</span></a></a>
+                </div>
+                <div class="navbar-collapse collapse ">
+                    <ul class="nav navbar-nav">
+                        <li><a href="http://127.0.0.1:8000/home/">Accueil</a></li>
+                        <li><a href="/home/cours/">Cours</a></li>
+                        <li><a href="/home/actualites/">Actualites</a></li>
+
+                          <li class="active"><a href="/home/evenements/">Evenements</a></li>
+                        {% if user.is_authenticated %}
+                        <li class="active"><a  style="color:#8fdb54">{{ user.username}} Connecte</a></li>
+                        <li><a href="http://127.0.0.1:8000/home/deconnexion">Deconnecter</a></li>
+                        {% else %}
+                        <li><a href="http://127.0.0.1:8000/home/connexion/">Se connecter</a></li>
+                        <li><a href="/home/inscription/">S'inscrire</a></li>
+                        {% endif %}
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+	</header>
+	<!-- end header -->
+    </br>
+    <section id="inner-headline">
+	<div class="container" >
+		<div class="row">
+			<div class="col-lg-12">
+				<ul class="breadcrumb">
+					<li><a href="/home/"><i class="fa fa-home"></i></a><i class="icon-angle-right"></i></li>
+					<li class="active"><a href ="/home/evenements/">Evenement</a></li>
+                    <li class="active">Detail</li>
+
+				</ul>
+			</div>
+		</div>
+	</div>
+	</section>
+
+	<section>
+	<div class="container">
+		<div class="row">
+
+			<div class="col-lg-12">
+                <aside class="right-sidebar">
+                    <h1 class="widgetheading"><span>{{ evenement.Tiitre }}</span></h1>
+<span>{{ evenement.date }}</span>
+  <div class="wrapper">
+      <aside class="right-sidebar">
+                <div id="st-accordion" class="st-accordion">
+                    <ul>
+
+                        <li>
+                            <a href="#">Organisateur<span class="st-arrow">Open or Close</span></a>
+                            <div class="st-content">
+                                <strong style="font-size: 18">{{ evenement.Organisateur }}</strong>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#">Durée<span class="st-arrow">Open or Close</span></a>
+                            <div class="st-content">
+                                 <strong>{{ evenement.Duree }}</strong>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#">Pré_requis<span class="st-arrow">Open or Close</span></a>
+                            <div class="st-content">
+                                <strong>{{ evenement.Pre_requis }}</strong>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#">Programme<span class="st-arrow">Open or Close</span></a>
+                            <div class="st-content">
+                                 <strong>{{ evenement.Programme }}</strong>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#">Catégorie<span class="st-arrow">Open or Close</span></a>
+                            <div class="st-content">
+                                <strong>{{ evenement.evenement }}</strong>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#">Plateforme<span class="st-arrow">Open or Close</span></a>
+                            <div class="st-content">
+                                <p>ENSI MOOC</p>
+                            </div>
+                        </li>
+                    </ul>
+					</div></aside></div></aside></div></div>
+
+
+             <div id="content">
+                 <div class="widget">
+                   <aside class="right-sidebar">
+
+                    {% for i in list %}
+                        {% ifequal i.event evenement.Tiitre %}
+                            {% ifequal i.name user.username %}
+                                <h4>Vous etre membre de ce groupe</h4>
+                                <a href="{% url "home.views.rejoindre" evenement.id %}">
+                                 <button class="btn btn-theme" type="submit">
+                                      Acceder
+	                             </button>
+                                </a>{% endifequal %}{% endifequal %}{% endfor %} </br></br>
+
+                            {% if user.is_superuser %}
+                         <h4>Vous etre un super user acceder sans rejoindre le groupe:</h4>
+                                <a href="{% url "home.views.rejoindre" evenement.id %}">
+                                 <button class="btn btn-theme" type="submit">
+                                      Acceder
+	                             </button>
+
+                   {% endif %}
+                     {% ifequal evenement.Organisateur user.username %}
+                         <h4>Vous etre le responsable de ce projet:</h4>
+                                <a href="{% url "home.views.rejoindre" evenement.id %}">
+                                 <button class="btn btn-theme" type="submit">
+                                      Acceder
+	                             </button>
+
+                   {% endifequal %}
+
+
+                    </br></br></br>
+                   {% if user.is_authenticated %}
+                    <form id="contactform"  method="post" enctype="multipart/form-data">
+                        <h4>Si vous n etes pas membre et vous voulez rejoindre le groupe de travail saisir votre
+                        {% csrf_token %}
+                       {{ form.as_p }}</h4>
+
+
+
+                        <button class="btn btn-theme" type="submit">
+                        Rejoindre
+	                    </button>
+                        </form>
+                       {% else %}
+                       <h4>Si vous voulez rejoindre le groupe de travail connectez vous !!</h4>
+                        {% endif %}
+
+
+                   </aside>
+
+
+        </div>
+
+
+
+			</div>
+		</div>
+
+	</section>
+
+
+
+
+
+	<footer>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-3">
+				<div class="widget">
+					<h5 class="widgetheading">A Propos</h5>
+					<address>
+					<strong>Ecole Nationale des sciences de l'Informatique</strong><br>
+					 Campus Universitaire de la Manouba<br>
+					 2010   Manouba, Tunisia</address>
+					<p>
+						<i class="icon-phone"></i>( +216 ) 71.600.444<br>
+						<i class="icon-envelope-alt"></i> http://www.ensi.rnu.tn/
+					</p>
+				</div>
+			</div>
+			<div class="col-lg-3">
+				<div>
+					
+                                 <img src="{% static "img/ensi.jpg"%}"></img>
+				</div>
+			</div>
+			<div class="col-lg-3">
+				<div class="widget">
+					<h5 class="widgetheading">Contact des admins</h5>
+					<ul class="link-list">
+						<li><a>Chahed Hedi : hedi.chahed.2i@gmail.com</a></li>
+						<li><a>Belheni Hamza : hamzabelheni@gmail.com</a></li>
+						<li><a>Mabrouk cyrine :</a> <br> <a>inacyrine@hotmail.fr</a></li>
+					</ul>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	
+	</footer>
+</div>
+<a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
+<!-- javascript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="{% static "js/jquery.js"%}"></script>
+<script src="{% static "js/jquery-1.11.0.min.js"%}"></script>
+<script src="{% static "js/jquery.leanModal.min.js"%}"></script>
+<script src="{% static "js/leanModal-modified-for-onload.js"%}"></script>
+<script src="{% static "js/jquery.easing.1.3.js"%}"></script>
+<script src="{% static "js/bootstrap.min.js"%}"></script>
+<script src="{% static "js/jquery.fancybox.pack.js"%}"></script>
+<script src="{% static "js/jquery.fancybox-media.js"%}"></script>s
+<script src="{% static "js/google-code-prettify/prettify.js"%}"></script>
+<script src="{% static "js/portfolio/jquery.quicksand.js"%}"></script>
+<script src="{% static "js/portfolio/setting.js"%}"></script>
+<script src="{% static "js/jquery.flexslider.js"%}"></script>
+<script src="{% static "js/animate.js"%}"></script>
+<script src="{% static "js/custom.js"%}"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<script src="{% static "js/jquery.accordionv.js"%}"></script>
+<script src="{% static "js/jquery.easingv.1.3.js"%}"></script>
+
+<noscript>
+        <style>
+                .st-accordion ul li{
+                    height:auto;
+                }
+                .st-accordion ul li > a span{
+                    visibility:hidden;
+                }
+        </style>
+</noscript>
+ <script type="text/javascript">
+            $(function() {
+
+                $('#st-accordion').accordion();
+
+            });
+        </script>
+
+</body>
+</html>

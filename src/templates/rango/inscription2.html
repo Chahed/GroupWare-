@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+{% load staticfiles %} <!-- New line -->
+
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Mooc - Ecole Nationale des sciences de l'informatique</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="" />
+
+<!-- css -->
+<link href="{% static "css/bootstrap.min.css"%}" rel="stylesheet" />
+<link href="{% static "css/fancybox/jquery.fancybox.css" % }" rel="stylesheet">
+<link href="{% static "css/jcarousel.css"%}" rel="stylesheet" />
+<link href="{% static "css/flexslider.css"%}" rel="stylesheet" />
+<link href="{% static "css/style.css"%}" rel="stylesheet" />
+
+
+<!-- Theme skin -->
+<link href="{% static "skins/default.css" %}" rel="stylesheet" />
+
+
+</head>
+<body>
+<div id="wrapper">
+	<!-- start header -->
+	<header>
+        <div class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="http://127.0.0.1:8000/home/"><span>M</span>ooc</a> <br>
+                    <a class="navbar-brand"><span>B</span>ienvenue Sur la platforme pedagogique de L'<a class="navbar-brand" href="http://www.ensi.rnu.tn"><span>ENSI</span></a></a>
+                </div>
+             <div class="navbar-collapse collapse ">
+                    <ul class="nav navbar-nav">
+                        <li><a href="http://127.0.0.1:8000/home/">Accueil</a></li>
+                        <li><a href="http://127.0.0.1:8000/home/cours/">Cours</a></li>
+                        <li><a href="/home/specialisation/">Specialisation</a></li>
+                        <li><a href="http://127.0.0.1:8000/home/connexion/">Se connecter</a></li>
+                        <li class="active"><a href="http://127.0.0.1:8000/home/inscription/">S'inscrire</a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+	</header>
+	<!-- end header -->
+	
+	<section class="callaction">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="big-cta">
+					<div class="cta-text">
+						<h2><span>I</span>nscription</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</section>
+	<section id="content">
+ <div class="row">
+<div class="col-lg-12">
+
+<div class="box-gray aligncenter">
+       {% if registered %}
+        <h6> Votre demande d inscription a ete enregistree et elle sera traitee pendant les prochains 24 heures.</h6>
+        <h4><a href="/home/">Accueil </a></h4>
+        {% else %}
+
+
+        <form id="user_form" method="post" action="/home/inscription/"
+                enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+
+            {{ user_form.as_p }}
+            {{ profile_form.as_p }}
+
+
+              <br> <br>
+            <div class="box-gray aligncenter">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-1"></div>
+            <div class="col-lg-1"></div>
+            <div class="col-lg-4">
+            <div class="box-bottom">
+            <input type="submit"  name="submit" value="S'inscrire" /></input></div></div></div>
+        </form>
+      {% endif %}
+</div>
+
+</div>
+</div>
+<body>
+
+</body>
+		
+<footer>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-3">
+				<div class="widget">
+					<h5 class="widgetheading">A Propos</h5>
+					<address>
+					<strong>Ecole Nationale des sciences de l'Informatique</strong><br>
+					 Campus Universitaire de la Manouba<br>
+					 2010   Manouba, Tunisia</address>
+					<p>
+						<i class="icon-phone"></i>( +216 ) 71.600.444<br>
+						<i class="icon-envelope-alt"></i> http://www.ensi.rnu.tn/
+					</p>
+				</div>
+			</div>
+			<div class="col-lg-3">
+				<div>
+					
+                                 <img src="{% static "img/ensi.jpg"%}"></img>
+				</div>
+			</div>
+			<div class="col-lg-3">
+				<div class="widget">
+					<h5 class="widgetheading">Contact des admins</h5>
+					<ul class="link-list">
+						<li><a>Chahed Hedi : hedi.chahed.2i@gmail.com</a></li>
+						<li><a>Belheni Hamza : hamzabelheni@gmail.com</a></li>
+						<li><a>Mabrouk cyrine :</a> <br> <a>inacyrine@hotmail.fr</a></li>
+					</ul>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	
+	</footer>
+</div>
+<a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
+<!-- javascript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="{% static "js/jquery.js"%}"></script>
+<script src="{% static "js/jquery.easing.1.3.js"%}"></script>
+<script src="{% static "js/bootstrap.min.js"%}"></script>
+<script src="{% static "js/jquery.fancybox.pack.js"%}"></script>
+<script src="{% static "js/jquery.fancybox-media.js"%"}></script>
+<script src="{% static "js/google-code-prettify/prettify.js"%}"></script>
+<script src="{% static "js/portfolio/jquery.quicksand.js"%}"></script>
+<script src="{% static "js/portfolio/setting.js"%}"></script>
+<script src="{% static "js/jquery.flexslider.js"%}"></script>
+<script src="{% static "js/animate.js"%}"></script>
+<script src="{% static "js/custom.js"%}"></script>
+</body>
+</html>

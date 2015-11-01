@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+{% load staticfiles %} <!-- New line -->
+
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Mooc - Ecole Nationale des sciences de l'informatique</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="" />
+
+<!-- css -->
+<link href="{% static "css/bootstrap.min.css"%}" rel="stylesheet" />
+<link href="{% static "css/fancybox/jquery.fancybox.css"%}" rel="stylesheet"/>
+<link href="{% static "css/jcarousel.css"%}" rel="stylesheet" />
+<link href="{% static "css/flexslider.css"%}" rel="stylesheet" />
+<link href="{% static "css/style.css"%}" rel="stylesheet" />
+
+
+<!-- Theme skin -->
+<link href="{% static "skins/default.css" %}" rel="stylesheet" />
+
+
+</head>
+<body>
+<div id="wrapper">
+	<!-- start header -->
+	<header>
+        <div class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="http://127.0.0.1:8000/home/"><span>E</span>NSI-M<span>ooc</span></a><br>
+                    <a class="navbar-brand"><span>L</span>a platforme pedagogique de L'<a class="navbar-brand" href="http://www.ensi.rnu.tn"><span>ENSI</span></a></a>
+                </div>
+                <div class="navbar-collapse collapse ">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="http://127.0.0.1:8000/home/">Accueil</a></li>
+
+                        <li><a href="/home/cours/">Cours</a></li>
+
+
+
+                         <li><a href="/home/actualites/">Actualites</a></li>
+                          <li><a href="/home/evenements/">Evenements</a></li>
+                        {% if user.is_authenticated %}
+                        <li class="active"><a  style="color:#8fdb54">{{ user.username}} Connecte</a></li>
+                        <li><a href="http://127.0.0.1:8000/home/deconnexion">Deconnecter</a></li>
+                        {% else %}
+                        <li><a href="http://127.0.0.1:8000/home/connexion/">Se connecter</a></li>
+                        <li><a href="/home/inscription/">S'inscrire</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+	</header>
+	<!-- end header -->
+	<section id="featured">
+	<!-- start slider -->
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+	<!-- Slider -->
+        <div id="main-slider" class="flexslider">
+            <ul class="slides">
+              <li>
+                <img src="{% static "img/slides/a.jpg" %}" alt="" />
+                    {% if user.is_authenticated %}
+                    {% else %} 
+                    <div class="flex-caption">
+                    <h3>Bienvenue</h3> 
+
+					<a href="http://127.0.0.1:8000/home/connexion/" class="btn btn-theme">Connexion</a> 
+                                        <a href="http://127.0.0.1:8000/home/inscription/" class="btn btn-theme">S'inscrire</a>
+                     
+                </div>
+                    {% endif %}
+              </li>
+              <li>
+                <img src="{% static "img/slides/b.jpg"%}" alt="" />
+                     {% if user.is_authenticated %}
+                    {% else %} 
+                    <div class="flex-caption">
+                    <h3>Bienvenue</h3> 
+
+					<a href="http://127.0.0.1:8000/home/connexion/" class="btn btn-theme">Connexion</a> 
+                                        <a href="http://127.0.0.1:8000/home/inscription/" class="btn btn-theme">S'inscrire</a>
+                     
+                </div>
+                    {% endif %}
+              </li>
+              
+               <li>
+                <img src="{% static "img/slides/j.jpg" %}" alt="" />
+                     {% if user.is_authenticated %}
+                    {% else %} 
+                    <div class="flex-caption">
+                    <h3>Bienvenue</h3> 
+
+					<a href="http://127.0.0.1:8000/home/connexion/" class="btn btn-theme">Connexion</a> 
+                                        <a href="http://127.0.0.1:8000/home/inscription/" class="btn btn-theme">S'inscrire</a>
+                     
+                </div>
+                    {% endif %}
+              </li>
+               <li>
+                <img src="{% static "img/slides/c.jpg" %}" alt="" />
+                     {% if user.is_authenticated %}
+                    {% else %} 
+                    <div class="flex-caption">
+                    <h3>Bienvenue</h3> 
+
+					<a href="http://127.0.0.1:8000/home/connexion/" class="btn btn-theme">Connexion</a> 
+                                        <a href="http://127.0.0.1:8000/home/inscription/" class="btn btn-theme">S'inscrire</a>
+                     
+                </div>
+                    {% endif %}
+              </li>
+               <li>
+                <img src="{% static "img/slides/e.jpg" %}" alt="" />
+                     {% if user.is_authenticated %}
+                    {% else %} 
+                    <div class="flex-caption">
+                    <h3>Bienvenue</h3> 
+
+					<a href="http://127.0.0.1:8000/home/connexion/" class="btn btn-theme">Connexion</a> 
+                                        <a href="http://127.0.0.1:8000/home/inscription/" class="btn btn-theme">S'inscrire</a>
+                     
+                </div>
+                    {% endif %}
+              </li>
+               <li>
+                <img src="{% static "img/slides/f.jpg" %}" alt="" />
+                    {% if user.is_authenticated %}
+                    {% else %} 
+                    <div class="flex-caption">
+                    <h3>Bienvenue</h3> 
+
+					<a href="http://127.0.0.1:8000/home/connexion/" class="btn btn-theme">Connexion</a> 
+                                        <a href="http://127.0.0.1:8000/home/inscription/" class="btn btn-theme">S'inscrire</a>
+                     
+                </div>
+                    {% endif %}
+              </li>
+              <li>
+                <img src="{% static "img/slides/d.jpg"%}" alt="" />
+                      {% if user.is_authenticated %}
+                    {% else %} 
+                    <div class="flex-caption">
+                    <h3>Bienvenue</h3> 
+
+					<a href="http://127.0.0.1:8000/home/connexion/" class="btn btn-theme">Connexion</a>
+                                        <a href="http://127.0.0.1:8000/home/inscription/" class="btn btn-theme">S'inscrire</a>
+                     
+                </div>
+                    {% endif %}
+              </li>
+            </ul>
+        </div>
+	<!-- end slider -->
+			</div>
+		</div>
+	</div>	
+	
+	
+
+	</section>
+	<section class="callaction">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="big-cta">
+					<div class="cta-text">
+						<h2><span>Les</span> Cours <span>Les</span> plus <span>consultes</span></h2>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</section>
+	<section id="content">
+	<div class="row">
+			<div class="col-lg-12">
+				<div class="row">
+					<div class="col-lg-3">
+						<div class="box">
+							<div class="box-gray aligncenter">
+								<h4>C++</h4>
+								<div class="icon">
+								<i class="fa fa-edit fa-3x"></i>
+								</div>
+								<p>
+								oriente objet
+								</p>
+									
+							</div>
+							<div class="box-bottom">
+								<a href="http://127.0.0.1:8000/home/cours/11">Acceder</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="box">
+							<div class="box-gray aligncenter">
+								<h4>HTML</h4>
+								<div class="icon">
+								<i class="fa fa-edit fa-3x"></i>
+								</div>
+								<p>
+								Web
+								</p>
+									
+							</div>
+							<div class="box-bottom">
+								<a href="http://127.0.0.1:8000/home/cours/10">Acceder</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="box">
+							<div class="box-gray aligncenter">
+								<h4>PL/SQL</h4>
+								<div class="icon">
+								<i class="fa fa-edit fa-3x"></i>
+								</div>
+								<p>
+								Database
+								</p>
+									
+							</div>
+							<div class="box-bottom">
+								<a href="http://127.0.0.1:8000/home/cours/9">Acceder</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="box">
+							<div class="box-gray aligncenter">
+								<h4>Module Reseaux</h4>
+								<div class="icon">
+								<i class="fa fa-edit fa-3x"></i>
+								</div>
+								<p>
+								Reseau local
+								</p>
+									
+							</div>
+							<div class="box-bottom">
+								<a href="http://127.0.0.1:8000/home/cours/8">Acceder</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- divider -->
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="solidline">
+				</div>
+			</div>
+		</div>
+		<!-- end divider -->
+		<!-- Portfolio Projects -->
+		<div class="row">
+			<div class="col-lg-12">
+					<section class="callaction">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="big-cta">
+					<div class="cta-text">
+						<h2><span>Les </span>Actualites<span> Recentes</span></h2>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</section>
+	<section id="content">
+				<div class="row">
+					<section id="projects">
+					<ul id="thumbs" class="portfolio">
+						<!-- Item Project and Filter Name -->
+						<li class="col-lg-3 design" data-id="id-0" data-type="web">
+						<div class="item-thumbs">
+						<!-- Fancybox - Gallery Enabled - Title - Full Image -->
+						<a class="hover-wrap fancybox" data-fancybox-group="gallery" title="{{ a1.titre }}" href="{{ a1.image.url }}">
+						<span class="overlay-img"></span>
+						<span class="overlay-img-thumb font-icon-plus"></span>
+						</a>
+						<!-- Thumb Image and Description -->
+						<img src="{{ a1.image.url }}" width="800px" height="600px" alt="{{ a1.contenu }}">
+						</div>
+						</li>
+						<!-- End Item Project -->
+						<!-- Item Project and Filter Name -->
+						<li class="item-thumbs col-lg-3 design" data-id="id-1" data-type="icon">
+						<!-- Fancybox - Gallery Enabled - Title - Full Image -->
+						<a class="hover-wrap fancybox" data-fancybox-group="gallery" title="{{ a2.titre }}" href="{{ a2.image.url }}">
+						<span class="overlay-img"></span>
+						<span class="overlay-img-thumb font-icon-plus"></span>
+						</a>
+						<!-- Thumb Image and Description -->
+						<img src="{{ a2.image.url }}" width="800px" height="600px" alt="{{ a2.contenu }}">
+						</li>
+						<!-- End Item Project -->
+						<!-- Item Project and Filter Name -->
+						<li class="item-thumbs col-lg-3 photography" data-id="id-2" data-type="illustrator">
+						<!-- Fancybox - Gallery Enabled - Title - Full Image -->
+						<a class="hover-wrap fancybox" data-fancybox-group="gallery" title="{{ a3.titre }}" href="{{ a3.image.url }}">
+						<span class="overlay-img"></span>
+						<span class="overlay-img-thumb font-icon-plus"></span>
+						</a>
+						<!-- Thumb Image and Description -->
+						<img src="{{ a3.image.url }}" width="800px" height="600px" alt="{{ a3.contenu }}">
+						</li>
+						<!-- End Item Project -->
+						<!-- Item Project and Filter Name -->
+						<li class="item-thumbs col-lg-3 photography" data-id="id-2" data-type="illustrator">
+						<!-- Fancybox - Gallery Enabled - Title - Full Image -->
+						<a class="hover-wrap fancybox" data-fancybox-group="gallery" title="{{ a4.titre }}" href="{{ a4.image.url }}">
+						<span class="overlay-img"></span>
+						<span class="overlay-img-thumb font-icon-plus"></span>
+						</a>
+						<!-- Thumb Image and Description -->
+						<img src="{{ a4.image.url }}" width="800px" height="600px" alt="{{ a4.contenu }}">
+						</li>
+						<!-- End Item Project -->
+					</ul>
+					</section>
+
+
+	</div>
+	</section>
+
+
+	</div>
+	</section>
+	<footer>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-3">
+				<div class="widget">
+					<h5 class="widgetheading">A Propos</h5>
+					<address>
+					<strong>Ecole Nationale des sciences de l'Informatique</strong><br>
+					 Campus Universitaire de la Manouba<br>
+					 2010   Manouba, Tunisia</address>
+					<p>
+						<i class="icon-phone"></i>( +216 ) 71.600.444<br>
+						<i class="icon-envelope-alt"></i> http://www.ensi.rnu.tn/
+					</p>
+				</div>
+			</div>
+			<div class="col-lg-3">
+				<div>
+					
+                                 <img src="{% static "img/ensi.jpg"%}"></img>
+				</div>
+			</div>
+			<div class="col-lg-3">
+				<div class="widget">
+					<h5 class="widgetheading">Contact des admins</h5>
+					<ul class="link-list">
+						<li><a>Chahed Hedi : hedi.chahed.2i@gmail.com</a></li>
+						<li><a>Belheni Hamza : hamzabelheni@gmail.com</a></li>
+						<li><a>Mabrouk cyrine :</a> <br> <a>inacyrine@hotmail.fr</a></li>
+					</ul>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	
+	</footer>
+</div>
+<a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
+<!-- javascript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="{% static "js/jquery.js"%}"></script>
+<script src="{% static "js/jquery.easing.1.3.js"%}"></script>
+<script src="{% static "js/bootstrap.min.js"%}"></script>
+<script src="{% static "js/jquery.fancybox.pack.js"%}"></script>
+<script src="{% static "js/jquery.fancybox-media.js"%}"></script>s
+<script src="{% static "js/google-code-prettify/prettify.js"%}"></script>
+<script src="{% static "js/portfolio/jquery.quicksand.js"%}"></script>
+<script src="{% static "js/portfolio/setting.js"%}"></script>
+<script src="{% static "js/jquery.flexslider.js"%}"></script>
+<script src="{% static "js/animate.js"%}"></script>
+<script src="{% static "js/custom.js"%}"></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+.span7{width:670px;}
+.btn-primary, .typeahead .active > a:hover, .typeahead .active > a, #menu ul a:hover, .dropdown-menu>.active>a, .dropdown-submenu:hover>a, .label-color, #boxes-container {
+  background-color: #00A0C8;
+}
+
+.label-color a {
+  font-size: 13px;
+  font-weight: 400;
+  color: #fff !important;
+  text-decoration: none;
+}
